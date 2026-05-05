@@ -1,0 +1,110 @@
+[
+  {
+    "year": "2026",
+    "student_name": "Emma Chen",
+    "project_title": "AI-Powered Recipe Generator",
+    "abstract": "An intelligent system that generates personalized recipes based on dietary restrictions, available ingredients, and cooking skill level. Uses GPT-4 API and computer vision for ingredient recognition.",
+    "theme": "Machine Learning",
+    "award": true,
+    "github_url": "https://github.com/emmachen/recipe-ai",
+    "live_url": "https://recipe-ai-demo.com",
+    "linkedin": "https://linkedin.com/in/emmachen",
+    "image_url": "https://picsum.photos/seed/recipe/800/600"
+  },
+  {
+    "year": "2026",
+    "student_name": "James Wilson",
+    "project_title": "Sustainable Campus Energy Monitor",
+    "abstract": "Real-time dashboard tracking energy consumption across campus buildings with predictive analytics for optimization. Integrated with IoT sensors and weather data.",
+    "theme": "IoT & Sustainability",
+    "award": true,
+    "github_url": "https://github.com/jwilson/energy-monitor",
+    "live_url": "https://campus-energy.demo",
+    "linkedin": "https://linkedin.com/in/jameswilson",
+    "image_url": "https://picsum.photos/seed/energy/800/600"
+  },
+  {
+    "year": "2026",
+    "student_name": "Priya Patel",
+    "project_title": "Mental Health Chatbot for Students",
+    "abstract": "A compassionate chatbot providing 24/7 mental health support, resources, and crisis intervention for university students. Built with empathy-first design principles.",
+    "theme": "Health Tech",
+    "award": false,
+    "github_url": "https://github.com/priyap/mental-health-bot",
+    "live_url": "",
+    "linkedin": "https://linkedin.com/in/priyapatel",
+    "image_url": "https://picsum.photos/seed/mental/800/600"
+  },
+  {
+    "year": "2026",
+    "student_name": "Alex Rodriguez",
+    "project_title": "Blockchain-Based Academic Credentials",
+    "abstract": "Decentralized system for issuing and verifying academic credentials using blockchain technology, preventing fraud and enabling instant verification.",
+    "theme": "Blockchain",
+    "award": false,
+    "github_url": "https://github.com/alexr/edu-chain",
+    "live_url": "https://edu-chain.demo",
+    "linkedin": "https://linkedin.com/in/alexrodriguez",
+    "image_url": "https://picsum.photos/seed/blockchain/800/600"
+  },
+  {
+    "year": "2025",
+    "student_name": "Sarah Johnson",
+    "project_title": "Voice-Controlled Smart Home Hub",
+    "abstract": "Accessibility-focused smart home controller using natural language processing, designed specifically for elderly users and people with disabilities.",
+    "theme": "Accessibility",
+    "award": true,
+    "github_url": "https://github.com/sjohnson/smart-home-voice",
+    "live_url": "https://smarthome-demo.com",
+    "linkedin": "https://linkedin.com/in/sarahjohnson",
+    "image_url": "https://picsum.photos/seed/smarthome/800/600"
+  },
+  {
+    "year": "2025",
+    "student_name": "Michael Kim",
+    "project_title": "Augmented Reality Museum Guide",
+    "abstract": "AR mobile app that brings museum exhibits to life with 3D models, animations, and interactive storytelling. Pilot deployed at City Art Museum.",
+    "theme": "AR/VR",
+    "award": true,
+    "github_url": "https://github.com/mkim/ar-museum",
+    "live_url": "https://ar-museum.demo",
+    "linkedin": "https://linkedin.com/in/michaelkim",
+    "image_url": "https://picsum.photos/seed/museum/800/600"
+  },
+  {
+    "year": "2025",
+    "student_name": "Olivia Martinez",
+    "project_title": "Community Food Sharing Platform",
+    "abstract": "Web platform connecting people with excess food to those in need, reducing food waste while addressing food insecurity in local communities.",
+    "theme": "Social Impact",
+    "award": false,
+    "github_url": "https://github.com/omartinez/food-share",
+    "live_url": "https://foodshare.demo",
+    "linkedin": "https://linkedin.com/in/oliviamartinez",
+    "image_url": "https://picsum.photos/seed/food/800/600"
+  },
+  {
+    "year": "2025",
+    "student_name": "Daniel Lee",
+    "project_title": "Automated Code Review Assistant",
+    "abstract": "ML-powered tool that provides intelligent code reviews, detecting bugs, security vulnerabilities, and suggesting improvements with explanations.",
+    "theme": "Developer Tools",
+    "award": true,
+    "github_url": "https://github.com/dlee/code-review-ai",
+    "live_url": "",
+    "linkedin": "https://linkedin.com/in/daniellee",
+    "image_url": "https://picsum.photos/seed/code/800/600"
+  },
+  {
+    "year": "2025",
+    "student_name": "Zara Ahmed",
+    "project_title": "Climate Change Data Visualization",
+    "abstract": "Interactive web platform visualizing 50 years of climate data with predictive models, making complex environmental data accessible to the public.",
+    "theme": "Data Science",
+    "award": false,
+    "github_url": "https://github.com/zahmed/climate-viz",
+    "live_url": "https://climate-data-viz.demo",
+    "linkedin": "https://linkedin.com/in/zaraahmed",
+    "image_url": "https://picsum.photos/seed/climate/800/600"
+  }
+]

@@ -1,0 +1,61 @@
+FINAL YEAR PROJECTS SHOWCASE - ALL FILES
+=========================================
+
+MAIN DOWNLOAD (Get this!):
+--------------------------
+✅ final-year-projects-github-pages.tar.gz
+   Contains: Complete project with all files below
+   Size: ~9 KB
+   Extract with: tar -xzf final-year-projects-github-pages.tar.gz
+
+
+DOCUMENTATION:
+--------------
+📖 START-HERE-DOWNLOAD-GUIDE.md - Read this first!
+📖 README.md - Full project documentation
+📖 DEPLOYMENT-GUIDE.md - GitHub Pages vs Netlify
+📖 WHERE-ARE-THE-HTML-FILES.md - Build process explained
+📖 demo-preview.html - Preview of the site
+
+
+PROJECT FILES (also in .tar.gz):
+---------------------------------
+Core:
+  📄 package.json - Dependencies list
+  📄 .eleventy.js - Build configuration  
+  📄 .gitignore - Git ignore rules
+
+Templates:
+  📝 index.njk - Home page template
+  📝 2025.njk - 2025 projects page
+  📝 2026.njk - 2026 projects page
+  📝 all-projects.njk - All projects page
+
+Data:
+  📊 _data/projects.json - Your project data (EDIT THIS!)
+
+Layouts:
+  🎨 _includes/base.njk - Base HTML template
+  🎨 css/style.css - All styling
+
+Deployment:
+  ⚙️ .github/workflows/deploy.yml - GitHub Actions workflow
+
+
+QUICK START:
+------------
+1. Download: final-year-projects-github-pages.tar.gz
+2. Extract: tar -xzf final-year-projects-github-pages.tar.gz
+3. Install: cd final-year-projects-v2 && npm install
+4. Test: npm start (visit http://localhost:8080)
+5. Deploy: Push to GitHub, enable Pages
+
+
+WHAT TO EDIT:
+-------------
+📊 _data/projects.json - Add your projects here
+🎨 css/style.css - Change colors here
+📝 _includes/base.njk - Update site name/footer
+
+
+ALL FILES READY TO DOWNLOAD!

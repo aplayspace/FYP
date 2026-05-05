@@ -1,0 +1,40 @@
+---
+layout: base.njk
+title: All Projects
+permalink: /all-projects/
+---
+
+<div class="year-header">
+  <h2>All Projects</h2>
+  <p>Complete catalog of student projects</p>
+</div>
+
+<section class="all-projects-section">
+  <div class="projects-grid">
+    {% for project in projects | reverse %}
+    <article class="project-card">
+      <img src="{{ project.image_url }}" alt="{{ project.project_title }}">
+      <div class="project-content">
+        {% if project.award %}
+        <span class="award-badge">🏆 Awarded</span>
+        {% endif %}
+        <h4>{{ project.project_title }}</h4>
+        <p class="student-name">{{ project.student_name }} • {{ project.year }}</p>
+        <p class="theme-tag">{{ project.theme }}</p>
+        <p class="abstract">{{ project.abstract | truncate(150) }}</p>
+        <div class="project-links">
+          {% if project.github_url %}
+          <a href="{{ project.github_url }}" target="_blank" rel="noopener">GitHub</a>
+          {% endif %}
+          {% if project.live_url %}
+          <a href="{{ project.live_url }}" target="_blank" rel="noopener">Live Demo</a>
+          {% endif %}
+          {% if project.linkedin %}
+          <a href="{{ project.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+          {% endif %}
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>

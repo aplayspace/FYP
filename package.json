@@ -1,0 +1,12 @@
+{
+  "name": "final-year-projects-showcase",
+  "version": "1.0.0",
+  "description": "Undergraduate final year projects showcase website",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}

@@ -1,0 +1,83 @@
+---
+layout: base.njk
+title: 2026 Projects
+permalink: /2026/
+---
+
+{% set yearProjects = projects | byYear(2026) %}
+
+<div class="year-header">
+  <h2>2026 Projects</h2>
+  <p>{{ yearProjects.length }} projects submitted</p>
+</div>
+
+{% set awardedProjects = yearProjects | awarded %}
+{% if awardedProjects.length > 0 %}
+<section class="awarded-section">
+  <h3>🏆 Award-Winning Projects 2026</h3>
+  <div class="projects-grid">
+    {% for project in awardedProjects %}
+    <article class="project-card featured">
+      <img src="{{ project.image_url }}" alt="{{ project.project_title }}">
+      <div class="project-content">
+        <span class="award-badge">🏆 Awarded</span>
+        <h4>{{ project.project_title }}</h4>
+        <p class="student-name">{{ project.student_name }}</p>
+        <p class="theme-tag">{{ project.theme }}</p>
+        <p class="abstract">{{ project.abstract }}</p>
+        <div class="project-links">
+          {% if project.github_url %}
+          <a href="{{ project.github_url }}" target="_blank" rel="noopener">GitHub</a>
+          {% endif %}
+          {% if project.live_url %}
+          <a href="{{ project.live_url }}" target="_blank" rel="noopener">Live Demo</a>
+          {% endif %}
+          {% if project.linkedin %}
+          <a href="{{ project.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+          {% endif %}
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<section class="all-projects-section">
+  <h3>All 2026 Projects</h3>
+  
+  {% set themes = yearProjects | uniqueThemes %}
+  {% for theme in themes %}
+  <div class="theme-group">
+    <h4 class="theme-header">{{ theme }}</h4>
+    <div class="projects-grid">
+      {% for project in yearProjects %}
+        {% if project.theme === theme %}
+        <article class="project-card">
+          <img src="{{ project.image_url }}" alt="{{ project.project_title }}">
+          <div class="project-content">
+            {% if project.award %}
+            <span class="award-badge">🏆 Awarded</span>
+            {% endif %}
+            <h4>{{ project.project_title }}</h4>
+            <p class="student-name">{{ project.student_name }}</p>
+            <p class="abstract">{{ project.abstract }}</p>
+            <div class="project-links">
+              {% if project.github_url %}
+              <a href="{{ project.github_url }}" target="_blank" rel="noopener">GitHub</a>
+              {% endif %}
+              {% if project.live_url %}
+              <a href="{{ project.live_url }}" target="_blank" rel="noopener">Live Demo</a>
+              {% endif %}
+              {% if project.linkedin %}
+              <a href="{{ project.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+              {% endif %}
+            </div>
+          </div>
+        </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</section>
