@@ -16,7 +16,7 @@ title: Home
       <h4>{{ year }}</h4>
       <p>{{ (projects | byYear(year)).length }} projects</p>
       <p class="awards">{{ (projects | byYear(year) | awarded).length }} awarded</p>
-      <a href="/{{ year }}/" class="btn">View Projects</a>
+      <a href="{{ ('/' + year + '/') | url }}" class="btn">View Projects</a>
     </div>
     {% endfor %}
   </div>
