@@ -79,7 +79,8 @@ img, svg { display: block; max-width: 100%; }
 .nav-dropdown-content {
   display: none;
   position: absolute;
-  top: calc(100% + 4px);
+  top: 100%;
+  padding-top: 4px;
   left: 0;
   background: white;
   min-width: 110px;
