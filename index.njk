@@ -3,59 +3,69 @@ layout: base.njk
 title: Home
 ---
 
-<div class="hero">
-  <h2>Undergraduate Final Year Projects</h2>
-  <p>Showcasing innovative student work across multiple disciplines</p>
-</div>
+{% if site.theme == 'codebase' %}
 
-<section class="years-overview">
-  <h3>Browse by Year</h3>
-  <div class="year-cards">
-    {% for year in projects | uniqueYears %}
-    <div class="year-card">
-      <h4>{{ year }}</h4>
-      <p>{{ (projects | byYear(year)).length }} projects</p>
-      <p class="awards">{{ (projects | byYear(year) | awarded).length }} awarded</p>
-      <a href="{{ ('/' + year + '/') | url }}" class="btn">View Projects</a>
-    </div>
-    {% endfor %}
+  {% include "themes/codebase/partials/hero.njk" %}
+  {% include "themes/codebase/partials/years.njk" %}
+  {% include "themes/codebase/partials/featured.njk" %}
+
+{% else %}
+
+  <div class="hero">
+    <h2>Undergraduate Final Year Projects</h2>
+    <p>Showcasing innovative student work across multiple disciplines</p>
   </div>
-</section>
 
-<section class="featured-projects">
-  <h3>Award-Winning Projects</h3>
-  <div class="projects-grid">
-    {% for project in projects | awarded | reverse %}
-    <article class="project-card">
-      <img src="{{ project.image_url }}" alt="{{ project.project_title }}">
-      <div class="project-content">
-        <span class="award-badge">🏆 Awarded</span>
-        <h4>{{ project.project_title }}</h4>
-        <p class="student-name">{{ project.student_name }} • {{ project.year }}</p>
-        <p class="theme-tag">{{ project.theme }}</p>
-        <p class="abstract">{{ project.abstract | truncate(150) }}</p>
-        <div class="project-links">
-          {% if project.github_url %}
-          <a href="{{ project.github_url }}" target="_blank">GitHub</a>
-          {% endif %}
-          {% if project.live_url %}
-          <a href="{{ project.live_url }}" target="_blank">Live Demo</a>
-          {% endif %}
-          {% if project.linkedin %}
-          <a href="{{ project.linkedin }}" target="_blank">LinkedIn</a>
-          {% endif %}
-        </div>
+  <section class="years-overview">
+    <h3>Browse by Year</h3>
+    <div class="year-cards">
+      {% for year in projects | uniqueYears %}
+      <div class="year-card">
+        <h4>{{ year }}</h4>
+        <p>{{ (projects | byYear(year)).length }} projects</p>
+        <p class="awards">{{ (projects | byYear(year) | awarded).length }} awarded</p>
+        <a href="{{ ('/' + year + '/') | url }}" class="btn">View Projects</a>
       </div>
-    </article>
-    {% endfor %}
-  </div>
-</section>
+      {% endfor %}
+    </div>
+  </section>
 
-<section class="themes-section">
-  <h3>Themes</h3>
-  <div class="theme-tags">
-    {% for theme in projects | uniqueThemes %}
-    <span class="theme-tag">{{ theme }}</span>
-    {% endfor %}
-  </div>
-</section>
+  <section class="featured-projects">
+    <h3>Award-Winning Projects</h3>
+    <div class="projects-grid">
+      {% for project in projects | awarded | reverse %}
+      <article class="project-card">
+        <img src="{{ project.image_url }}" alt="{{ project.project_title }}">
+        <div class="project-content">
+          <span class="award-badge">🏆 Awarded</span>
+          <h4>{{ project.project_title }}</h4>
+          <p class="student-name">{{ project.student_name }} • {{ project.year }}</p>
+          <p class="theme-tag">{{ project.theme }}</p>
+          <p class="abstract">{{ project.abstract | truncate(150) }}</p>
+          <div class="project-links">
+            {% if project.github_url %}
+            <a href="{{ project.github_url }}" target="_blank">GitHub</a>
+            {% endif %}
+            {% if project.live_url %}
+            <a href="{{ project.live_url }}" target="_blank">Live Demo</a>
+            {% endif %}
+            {% if project.linkedin %}
+            <a href="{{ project.linkedin }}" target="_blank">LinkedIn</a>
+            {% endif %}
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="themes-section">
+    <h3>Themes</h3>
+    <div class="theme-tags">
+      {% for theme in projects | uniqueThemes %}
+      <span class="theme-tag">{{ theme }}</span>
+      {% endfor %}
+    </div>
+  </section>
+
+{% endif %}

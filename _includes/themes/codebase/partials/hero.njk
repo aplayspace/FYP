@@ -1,0 +1,56 @@
+{% set headline    = hero.headline    or "Undergraduate Final Year Projects" %}
+{% set subheadline = hero.subheadline or "Showcasing innovative student work in Computer Science" %}
+{% set eyebrow     = hero.eyebrow     or "Showcase · 2023 — 2026" %}
+{% set chips       = hero.chips       or ["AI/ML", "Systems", "HCI", "Security", "Graphics", "Theory"] %}
+{% set stats       = hero.stats       or [
+  { "n": "200+", "label": "Projects" },
+  { "n": "48",   "label": "Award winners" },
+  { "n": "4",    "label": "Years" },
+  { "n": "32",   "label": "Supervisors" }
+] %}
+
+<section class="hero" data-hero>
+  <div class="hero-bg" aria-hidden="true"></div>
+
+  <div class="blob blob--1" aria-hidden="true"></div>
+  <div class="blob blob--2" aria-hidden="true"></div>
+  <div class="blob blob--3" aria-hidden="true"></div>
+  <div class="blob blob--4" aria-hidden="true"></div>
+  <div class="blob blob--5" aria-hidden="true"></div>
+
+  <div class="code-rain" aria-hidden="true" data-code-rain></div>
+
+  <div class="hero-content">
+    <div class="hero-card">
+      <div class="hero-eyebrow">
+        <span class="dot"></span> {{ eyebrow }}
+      </div>
+      <h1>{{ headline }}</h1>
+      <p class="hero-sub">{{ subheadline }}</p>
+
+      <form class="hero-search" action="{{ '/all-projects/' | url }}" method="get" role="search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5B6478" stroke-width="2" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>
+        </svg>
+        <input name="q" placeholder="Search projects by title, topic, or student…" />
+        <button type="submit">Search</button>
+      </form>
+
+      <div class="hero-chips">
+        <span class="chip-label">Browse:</span>
+        {% for tag in chips %}
+          <a class="chip" href="{{ '/all-projects/' | url }}?topic={{ tag }}">{{ tag }}</a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      {% for s in stats %}
+        <div class="stat">
+          <div class="stat-n">{{ s.n }}</div>
+          <div class="stat-l">{{ s.label }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

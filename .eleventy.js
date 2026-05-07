@@ -1,7 +1,17 @@
+const siteData = require('./_data/site.json');
+const THEME = siteData.theme || 'classic';
+
 module.exports = function(eleventyConfig) {
-  // Copy CSS and Image files to output
+  // Exclude the codebase reference folder from the build
+  eleventyConfig.ignores.add("codebase/**");
+
+  // Copy static assets to output
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("img");
+  eleventyConfig.addPassthroughCopy("static");
+
+  // Point `layout: base.njk` to whichever theme is active
+  eleventyConfig.addLayoutAlias('base.njk', `themes/${THEME}/base.njk`);
 
   // Custom filter: Filter projects by year
   eleventyConfig.addFilter("byYear", function(projects, year) {
@@ -23,6 +33,11 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("uniqueYears", function(projects) {
     const years = [...new Set(projects.map(p => p.year))];
     return years.sort().reverse();
+  });
+
+  // Custom filter: Limit array to first N items (used by codebase theme)
+  eleventyConfig.addFilter("limit", function(array, n) {
+    return array.slice(0, n);
   });
 
   return {

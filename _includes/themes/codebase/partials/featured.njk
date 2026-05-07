@@ -1,0 +1,43 @@
+{% if featured and featured.projects and featured.projects | length > 0 %}
+<section class="featured">
+  <header class="section-head">
+    <div class="kicker">Award winners · {{ featured.year }}</div>
+    <h2>This year's best work.</h2>
+    <p>Selected by faculty for technical depth, originality, and craft.</p>
+  </header>
+
+  <div class="feat-grid">
+    {% for p in featured.projects %}
+      <article class="feat-card">
+        <a href="{{ p.href or '#' }}" class="feat-thumb" style="background: {{ p.color or '#C5B0FF' }};" aria-label="{{ p.title }}">
+          <div class="feat-thumb-overlay">
+            {% for t in (p.tags or []) %}
+              <span class="feat-tag">{{ t }}</span>
+            {% endfor %}
+          </div>
+        </a>
+        <div class="feat-body">
+          <div class="feat-award">★ Award winner</div>
+          <h3><a href="{{ p.href or '#' }}">{{ p.title }}</a></h3>
+          <div class="feat-meta">
+            <span>{{ p.student }}</span>
+            {% if p.supervisor %}
+            <span class="dot-sep">·</span>
+            <span>{{ p.supervisor }}</span>
+            {% endif %}
+          </div>
+          <a class="feat-link" href="{{ p.href or '#' }}">Read project →</a>
+        </div>
+      </article>
+    {% endfor %}
+
+    {% if featured.remaining and featured.remaining > 0 %}
+      <article class="feat-card feat-card--more">
+        <div class="feat-more-num">+{{ featured.remaining }}</div>
+        <div class="feat-more-text">more projects across {{ featured.year }}</div>
+        <a class="feat-link" href="{{ featured.all_href | url }}">Browse all {{ featured.year }} →</a>
+      </article>
+    {% endif %}
+  </div>
+</section>
+{% endif %}

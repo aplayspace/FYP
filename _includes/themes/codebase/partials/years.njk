@@ -1,0 +1,37 @@
+{% set palette = ["#C5B0FF", "#FFB8DA", "#A8E5FF", "#D4FFB0", "#FFD27A"] %}
+
+<section class="years" id="years">
+  <header class="section-head">
+    <div class="kicker">Browse by year</div>
+    <h2>{{ years | length }} cohorts. One archive.</h2>
+    <p>Every undergraduate project, supervisor, and award since {{ (years | last).year }}.</p>
+  </header>
+
+  <div class="year-grid">
+    {% for y in years %}
+      <a class="year-card" href="{{ ('/' + y.year + '/') | url }}">
+        <div class="yc-thumbs">
+          {% for p in y.projects | limit(4) %}
+            {% set c = p.color or palette[loop.index0 % 5] %}
+            <div class="yc-thumb" style="background: {{ c }};">
+              <span>{{ p.title }}</span>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="yc-body">
+          <div class="yc-row">
+            <div class="yc-num">{{ y.year }}</div>
+            {% if y.awarded and y.awarded > 0 %}
+              <div class="yc-badge">★ {{ y.awarded }} awarded</div>
+            {% endif %}
+          </div>
+          <div class="yc-meta">
+            {{ y.count }} projects
+            {% if y.supervisors %} · supervised by {{ y.supervisors }} faculty{% endif %}
+          </div>
+          <div class="yc-cta">View cohort →</div>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</section>
