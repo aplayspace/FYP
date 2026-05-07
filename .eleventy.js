@@ -1,6 +1,7 @@
 module.exports = function(eleventyConfig) {
-  // Copy CSS files to output
+  // Copy CSS and Image files to output
   eleventyConfig.addPassthroughCopy("css");
+  eleventyConfig.addPassthroughCopy("img");
 
   // Custom filter: Filter projects by year
   eleventyConfig.addFilter("byYear", function(projects, year) {

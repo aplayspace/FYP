@@ -8,12 +8,22 @@
 </head>
 <body>
   <header>
-    <div class="container">
-      <h1><a href="{{ '/' | url }}">Final Year Projects Showcase</a></h1>
+    <div class="container header-container">
+      <div class="logo-area">
+        <a href="{{ '/' | url }}">
+          <img src="{{ '/img/ucd-logo.png' | url }}" alt="UCD Logo" class="header-logo">
+          <span class="site-title">Final Year Projects</span>
+        </a>
+      </div>
       <nav>
         <a href="{{ '/' | url }}">Home</a>
-        <a href="{{ '/2026/' | url }}">2026</a>
-        <a href="{{ '/2025/' | url }}">2025</a>
+        <div class="dropdown">
+          <button class="dropbtn">Years ▾</button>
+          <div class="dropdown-content">
+            <a href="{{ '/2026/' | url }}">2026</a>
+            <a href="{{ '/2025/' | url }}">2025</a>
+          </div>
+        </div>
         <a href="{{ '/all-projects/' | url }}">All Projects</a>
       </nav>
     </div>
