@@ -1,4 +1,4 @@
-<nav class="nav">
+<nav class="nav" id="site-nav">
   <a class="nav-brand" href="{{ '/' | url }}">
     <img src="{{ '/img/ucd-logo.png' | url }}" alt="UCD Logo" style="height:32px;display:block;">
     <span class="nav-title">
@@ -6,10 +6,10 @@
       <span class="nav-product">Final Year Projects</span>
     </span>
   </a>
-  <div class="nav-links">
+  <div class="nav-links" id="nav-links">
     <a href="{{ '/' | url }}">Home</a>
-    <div class="nav-dropdown">
-      <button class="nav-dropbtn">Years ▾</button>
+    <div class="nav-dropdown" id="nav-years">
+      <button class="nav-dropbtn" id="nav-years-btn" aria-haspopup="true" aria-expanded="false">Years ▾</button>
       <div class="nav-dropdown-content">
         <a href="{{ '/2026/' | url }}">2026</a>
         <a href="{{ '/2025/' | url }}">2025</a>
@@ -17,4 +17,41 @@
     </div>
     <a href="{{ '/all-projects/' | url }}">All Projects</a>
   </div>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <line x1="2" y1="6" x2="20" y2="6"/>
+      <line x1="2" y1="11" x2="20" y2="11"/>
+      <line x1="2" y1="16" x2="20" y2="16"/>
+    </svg>
+  </button>
 </nav>
+<script>
+(function(){
+  var hamburger = document.getElementById('nav-hamburger');
+  var navLinks  = document.getElementById('nav-links');
+  var yearsBtn  = document.getElementById('nav-years-btn');
+  var yearsMenu = document.getElementById('nav-years');
+
+  hamburger.addEventListener('click', function(){
+    var open = navLinks.classList.toggle('is-open');
+    hamburger.setAttribute('aria-expanded', String(open));
+    if (!open) yearsMenu.classList.remove('is-open');
+  });
+
+  yearsBtn.addEventListener('click', function(e){
+    if (window.getComputedStyle(hamburger).display !== 'none') {
+      var open = yearsMenu.classList.toggle('is-open');
+      yearsBtn.setAttribute('aria-expanded', String(open));
+      e.stopPropagation();
+    }
+  });
+
+  document.addEventListener('click', function(e){
+    if (!e.target.closest('#site-nav')) {
+      navLinks.classList.remove('is-open');
+      yearsMenu.classList.remove('is-open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+</script>

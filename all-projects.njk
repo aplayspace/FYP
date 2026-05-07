@@ -4,37 +4,53 @@ title: All Projects
 permalink: /all-projects/
 ---
 
-<div class="year-header">
-  <h2>All Projects</h2>
-  <p>Complete catalog of student projects</p>
-</div>
+{% set palette = ["#C5B0FF", "#FFB8DA", "#A8E5FF", "#D4FFB0", "#FFD27A"] %}
 
-<section class="all-projects-section">
-  <div class="projects-grid">
-    {% for project in projects | reverse %}
-    <article class="project-card">
-      <img src="{{ project.image_url }}" alt="{{ project.project_title }}">
-      <div class="project-content">
-        {% if project.award %}
-        <span class="award-badge">🏆 Awarded</span>
-        {% endif %}
-        <h4>{{ project.project_title }}</h4>
-        <p class="student-name">{{ project.student_name }} • {{ project.year }}</p>
-        <p class="theme-tag">{{ project.theme }}</p>
-        <p class="abstract">{{ project.abstract | truncate(150) }}</p>
-        <div class="project-links">
-          {% if project.github_url %}
-          <a href="{{ project.github_url }}" target="_blank" rel="noopener">GitHub</a>
-          {% endif %}
-          {% if project.live_url %}
-          <a href="{{ project.live_url }}" target="_blank" rel="noopener">Live Demo</a>
-          {% endif %}
-          {% if project.linkedin %}
-          <a href="{{ project.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+<section class="page-hero">
+  <div class="page-hero-bg" aria-hidden="true"></div>
+  <div class="blob blob--1" aria-hidden="true"></div>
+  <div class="blob blob--2" aria-hidden="true"></div>
+  <div class="blob blob--4" aria-hidden="true"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-card">
+      <div class="hero-eyebrow"><span class="dot"></span> All Years · Complete Catalog</div>
+      <h1>All Projects</h1>
+      <p>{{ projects.length }} projects across all cohorts</p>
+    </div>
+  </div>
+</section>
+
+<section class="inner-section inner-section--alt">
+  <div class="inner-container">
+    <div class="proj-grid">
+      {% for project in projects | reverse %}
+      {% set color = palette[loop.index0 % 5] %}
+      <article class="proj-card">
+        <div class="proj-thumb" style="background: {{ color }};">
+          {% if project.award %}
+          <div class="proj-thumb-overlay">
+            <span class="feat-tag">★ Award winner</span>
+          </div>
           {% endif %}
         </div>
-      </div>
-    </article>
-    {% endfor %}
+        <div class="proj-body">
+          {% if project.award %}<div class="proj-award">★ Award winner</div>{% endif %}
+          <h3>{{ project.project_title }}</h3>
+          <div class="proj-meta">
+            <span>{{ project.student_name }}</span>
+            <span class="dot-sep">·</span>
+            <span>{{ project.year }}</span>
+          </div>
+          <span class="proj-tag">{{ project.theme }}</span>
+          <p class="proj-abstract">{{ project.abstract | truncate(150) }}</p>
+          <div class="proj-links">
+            {% if project.github_url %}<a href="{{ project.github_url }}" target="_blank" rel="noopener">GitHub</a>{% endif %}
+            {% if project.live_url %}<a href="{{ project.live_url }}" target="_blank" rel="noopener">Live Demo</a>{% endif %}
+            {% if project.linkedin %}<a href="{{ project.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>{% endif %}
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
   </div>
 </section>

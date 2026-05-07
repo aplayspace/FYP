@@ -5,36 +5,50 @@ permalink: /2026/
 ---
 
 {% set yearProjects = projects | byYear(2026) %}
-
-<div class="year-header">
-  <h2>2026 Projects</h2>
-  <p>{{ yearProjects.length }} projects submitted</p>
-</div>
-
 {% set awardedProjects = yearProjects | awarded %}
+{% set palette = ["#C5B0FF", "#FFB8DA", "#A8E5FF", "#D4FFB0", "#FFD27A"] %}
+
+<section class="page-hero">
+  <div class="page-hero-bg" aria-hidden="true"></div>
+  <div class="blob blob--1" aria-hidden="true"></div>
+  <div class="blob blob--2" aria-hidden="true"></div>
+  <div class="blob blob--4" aria-hidden="true"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-card">
+      <div class="hero-eyebrow"><span class="dot"></span> CS Final Year Projects · 2026</div>
+      <h1>2026 Projects</h1>
+      <p>{{ yearProjects.length }} projects submitted{% if awardedProjects.length > 0 %} · {{ awardedProjects.length }} award winner{% if awardedProjects.length != 1 %}s{% endif %}{% endif %}</p>
+    </div>
+  </div>
+</section>
+
 {% if awardedProjects.length > 0 %}
-<section class="awarded-section">
-  <h3>🏆 Award-Winning Projects 2026</h3>
-  <div class="projects-grid">
+<section class="featured">
+  <header class="section-head">
+    <div class="kicker">Award winners · 2026</div>
+    <h2>This year's best work.</h2>
+    <p>Selected by faculty for technical depth, originality, and craft.</p>
+  </header>
+  <div class="feat-grid">
     {% for project in awardedProjects %}
-    <article class="project-card featured">
-      <img src="{{ project.image_url }}" alt="{{ project.project_title }}">
-      <div class="project-content">
-        <span class="award-badge">🏆 Awarded</span>
-        <h4>{{ project.project_title }}</h4>
-        <p class="student-name">{{ project.student_name }}</p>
-        <p class="theme-tag">{{ project.theme }}</p>
-        <p class="abstract">{{ project.abstract }}</p>
-        <div class="project-links">
-          {% if project.github_url %}
-          <a href="{{ project.github_url }}" target="_blank" rel="noopener">GitHub</a>
-          {% endif %}
-          {% if project.live_url %}
-          <a href="{{ project.live_url }}" target="_blank" rel="noopener">Live Demo</a>
-          {% endif %}
-          {% if project.linkedin %}
-          <a href="{{ project.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
-          {% endif %}
+    {% set color = palette[loop.index0 % 5] %}
+    <article class="feat-card">
+      <div class="feat-thumb" style="background: {{ color }};">
+        <div class="feat-thumb-overlay">
+          <span class="feat-tag">{{ project.theme }}</span>
+        </div>
+      </div>
+      <div class="feat-body">
+        <div class="feat-award">★ Award winner</div>
+        <h3>{{ project.project_title }}</h3>
+        <div class="feat-meta">
+          <span>{{ project.student_name }}</span>
+        </div>
+        <p class="proj-abstract">{{ project.abstract | truncate(130) }}</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          {% if project.github_url %}<a class="feat-link" href="{{ project.github_url }}" target="_blank" rel="noopener">GitHub →</a>{% endif %}
+          {% if project.live_url %}<a class="feat-link" href="{{ project.live_url }}" target="_blank" rel="noopener">Live Demo →</a>{% endif %}
+          {% if project.linkedin %}<a class="feat-link" href="{{ project.linkedin }}" target="_blank" rel="noopener">LinkedIn →</a>{% endif %}
         </div>
       </div>
     </article>
@@ -43,41 +57,46 @@ permalink: /2026/
 </section>
 {% endif %}
 
-<section class="all-projects-section">
-  <h3>All 2026 Projects</h3>
-  
-  {% set themes = yearProjects | uniqueThemes %}
-  {% for theme in themes %}
-  <div class="theme-group">
-    <h4 class="theme-header">{{ theme }}</h4>
-    <div class="projects-grid">
-      {% for project in yearProjects %}
+<section class="inner-section inner-section--alt">
+  <div class="inner-container">
+    <div class="inner-head">
+      <div class="kicker">All projects · 2026</div>
+      <h2>Full cohort.</h2>
+    </div>
+    {% set themes = yearProjects | uniqueThemes %}
+    {% for theme in themes %}
+    <div class="theme-group">
+      <div class="theme-kicker">{{ theme }}</div>
+      <div class="proj-grid">
+        {% for project in yearProjects %}
         {% if project.theme === theme %}
-        <article class="project-card">
-          <img src="{{ project.image_url }}" alt="{{ project.project_title }}">
-          <div class="project-content">
+        {% set color = palette[loop.index0 % 5] %}
+        <article class="proj-card">
+          <div class="proj-thumb" style="background: {{ color }};">
             {% if project.award %}
-            <span class="award-badge">🏆 Awarded</span>
+            <div class="proj-thumb-overlay">
+              <span class="feat-tag">★ Award winner</span>
+            </div>
             {% endif %}
-            <h4>{{ project.project_title }}</h4>
-            <p class="student-name">{{ project.student_name }}</p>
-            <p class="abstract">{{ project.abstract }}</p>
-            <div class="project-links">
-              {% if project.github_url %}
-              <a href="{{ project.github_url }}" target="_blank" rel="noopener">GitHub</a>
-              {% endif %}
-              {% if project.live_url %}
-              <a href="{{ project.live_url }}" target="_blank" rel="noopener">Live Demo</a>
-              {% endif %}
-              {% if project.linkedin %}
-              <a href="{{ project.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
-              {% endif %}
+          </div>
+          <div class="proj-body">
+            {% if project.award %}<div class="proj-award">★ Award winner</div>{% endif %}
+            <h3>{{ project.project_title }}</h3>
+            <div class="proj-meta">
+              <span>{{ project.student_name }}</span>
+            </div>
+            <p class="proj-abstract">{{ project.abstract | truncate(150) }}</p>
+            <div class="proj-links">
+              {% if project.github_url %}<a href="{{ project.github_url }}" target="_blank" rel="noopener">GitHub</a>{% endif %}
+              {% if project.live_url %}<a href="{{ project.live_url }}" target="_blank" rel="noopener">Live Demo</a>{% endif %}
+              {% if project.linkedin %}<a href="{{ project.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>{% endif %}
             </div>
           </div>
         </article>
         {% endif %}
-      {% endfor %}
+        {% endfor %}
+      </div>
     </div>
+    {% endfor %}
   </div>
-  {% endfor %}
 </section>
